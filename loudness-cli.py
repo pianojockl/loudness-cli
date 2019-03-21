@@ -19,7 +19,7 @@ def r128Stats(filePath, stream=0):
               'null',
               '-']
     proc = subprocess.Popen(ffargs, stderr=subprocess.PIPE)
-    stats = proc.communicate()[1]
+    stats = proc.communicate()[1].decode('utf-8')
     summaryIndex = stats.rfind('Summary:')
     summaryList = stats[summaryIndex:].split()
 
@@ -54,7 +54,7 @@ if __name__ == "__main__":
 		statsDict["gain"] = linearGain(statsDict["I"], float(args.target));
 		print(json.dumps(statsDict))
 	else:
-		print "%s not found" % args.input
+		print("%s not found" % args.input)
 
 
 
